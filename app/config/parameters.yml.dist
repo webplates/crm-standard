@@ -2,6 +2,7 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
+    database_driver:   pdo_mysql
     database_host:     127.0.0.1
     database_port:     ~
     database_name:     symfony
@@ -17,3 +18,18 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # WebSocket server config
+    websocket_bind_address:  "0.0.0.0"  # The host IP the socket server will bind to
+    websocket_bind_port:     8080       # The port the socket server will listen on
+    websocket_frontend_host: "*"        # Websocket host the browser will connect to
+    websocket_frontend_port: 8080       # Websocket port the browser will connect to
+    websocket_backend_host:  "*"        # Websocket host the application server will connect to
+    websocket_backend_port:  8080       # Websocket port the application server will connect to
+
+    installed:              ~
+    assets_version:         ~
+    assets_version_strategy: time_hash # A strategy should be used to generate the global assets version, can be:
+                                       # null        - the assets version stays unchanged
+                                       # time_hash   - a hash of the current time
+                                       # incremental - the next assets version is the previous version is incremented by one

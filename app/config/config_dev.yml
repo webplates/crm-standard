@@ -43,3 +43,10 @@ monolog:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+fos_js_routing:
+    routes_to_expose:         [".*"]
+
+oro_assetic:
+    css_debug:      ~
+    css_debug_all:  false

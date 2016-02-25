@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -18,10 +18,11 @@ framework:
     form:            ~
     csrf_protection: ~
     validation:      { enable_annotations: true }
-    #serializer:      { enable_annotations: true }
+    serializer:      { enable_annotations: true }
     templating:
-        engines: ['twig']
-        #assets_version: SomeVersionScheme
+        engines: ['twig', 'php'] # PHP engine required by Oro
+        assets_version: %assets_version%
+        assets_version_format: %%s?version=%%s
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -31,41 +32,27 @@ framework:
         save_path:   %kernel.storage_dir%/var/sessions/%kernel.environment%
     fragments:       ~
     http_method_override: true
-    assets: ~
 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    exception_controller: "FOS\RestBundle\Controller\ExceptionController::showAction"
+    globals:
+        bap:
+            layout: ::base.html.twig  # default layout across all Oro bundles
 
-# Doctrine Configuration
-doctrine:
-    dbal:
-        driver:   pdo_mysql
-        host:     "%database_host%"
-        port:     "%database_port%"
-        dbname:   "%database_name%"
-        user:     "%database_user%"
-        password: "%database_password%"
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
-
-    orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
-        naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
-
-# Doctrine Migrations Configuration
-doctrine_migrations:
-    dir_name: "%kernel.root_dir%/migrations"
-    namespace: Application\Migrations
-    table_name: migration_versions
-    name: Application Migrations
+# Assetic Configuration (used by Oro)
+assetic:
+    debug:                    false
+    use_controller:           false
+    filters:
+        cssrewrite: ~
+        lessphp:
+            file: %kernel.storage_dir%/vendor/leafo/lessphp/lessc.inc.php
+            apply_to: "\.less$"
+            paths: ["%kernel.root_dir%/../web/bundles"]
+        cssmin: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -89,3 +76,94 @@ liip_monitor:
     checks:
         security_advisory:
             lock_file: '%kernel.root_dir%/../composer.lock'
+
+#
+# Oro configuration requirements
+#
+fos_rest:
+    body_listener:
+        decoders:
+            json: fos_rest.decoder.json
+    view:
+        failed_validation:    HTTP_BAD_REQUEST
+        default_engine:       php
+        formats:
+            json:             true
+            xml:              false
+    format_listener:
+        rules:
+            - { path: '^/api/rest', priorities: [ json ], fallback_format: json, prefer_extension: false }
+            - { path: '^/api/soap', stop: true }
+            - { path: '^/', stop: true }
+    routing_loader:
+        default_format:       json
+
+fos_js_routing:
+    routes_to_expose:         [oro_*]
+
+be_simple_soap:
+    cache:
+        type:                 disk
+        lifetime:             86400
+        limit:                5
+    services:
+        soap:
+            namespace:        urn:OroPlatform
+            binding:          rpc-literal
+            resource:         .
+            resource_type:    oro_soap
+
+stof_doctrine_extensions:
+    default_locale: en
+    translation_fallback: true
+    orm:
+        default:
+            translatable:     true
+            tree:             true
+
+escape_wsse_authentication:
+    authentication_provider_class: Oro\Bundle\UserBundle\Security\WsseAuthProvider
+    authentication_listener_class: Oro\Bundle\UserBundle\Security\WsseAuthListener
+
+genemu_form:
+    select2: ~
+    autocomplete: ~
+
+a2lix_translation_form:
+    locales: [en]
+    templating: "OroUIBundle:Form:translatable.html.twig"
+
+
+# Overriden Oro default
+knp_gaufrette:
+    adapters:
+        attachments:
+            local:
+                directory: %kernel.storage_dir%/var/attachments
+
+#
+# ORO Bundles config
+#
+oro_distribution:
+    entry_point: ~
+
+oro_require_js:
+    build_path:               "js/oro.min.js"
+    building_timeout:         3600
+    build:
+        preserveLicenseComments: true
+
+oro_help:
+    defaults:
+        server: http://help.orocrm.com/
+        prefix: Third_Party
+    vendors:
+        Oro:
+            prefix: ~
+            alias: Platform
+    routes:
+        oro_default:
+            uri: Platform/OroDashboardBundle
+
+oro_theme:
+    active_theme: oro

@@ -49,3 +49,19 @@
 /web/twitter.png
 /web/yandex-*.png
 /web/yandex-browser-manifest.json
+
+
+# Oro
+!/var/attachment
+/var/attachment/*
+!var/attachment/.gitkeep
+!var/OroRequirements.php
+/web/build.js
+/web/css
+/web/js
+!/web/media
+/web/media/*
+!web/media/.gitkeep
+!/web/uploads
+/web/uploads/*
+!web/uploads/.gitkeep

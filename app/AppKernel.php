@@ -1,26 +1,17 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
+use Oro\Bundle\DistributionBundle\OroKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
-class AppKernel extends Kernel
+class AppKernel extends OroKernel
 {
     public function registerBundles()
     {
         $bundles = array(
-            new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
-            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
-            new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\MonologBundle\MonologBundle(),
-            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-
-            new Lexik\Bundle\MaintenanceBundle\LexikMaintenanceBundle(),
             new Liip\MonitorBundle\LiipMonitorBundle(),
 
-            new AppBundle\AppBundle(),
+//            new AppBundle\AppBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
@@ -34,7 +25,11 @@ class AppKernel extends Kernel
             $bundles[] = new Hal\Bundle\PhpMetricsCollector\PhpMetricsCollectorBundle();
         }
 
-        return $bundles;
+        if ('test' === $this->getEnvironment()) {
+            $bundles[] = new Oro\Bundle\TestFrameworkBundle\OroTestFrameworkBundle();
+        }
+
+        return array_merge(parent::registerBundles(), $bundles);
     }
 
     public function getRootDir()
@@ -55,5 +50,10 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    public function boot()
+    {
+        Kernel::boot();
     }
 }
