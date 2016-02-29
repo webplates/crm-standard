@@ -17,3 +17,6 @@ RUN echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
 ADD php.ini /usr/local/etc/php/php.ini
 
 WORKDIR /var/www
+
+RUN apt-get install -y libxml2-dev
+RUN docker-php-ext-install -j$(nproc) soap

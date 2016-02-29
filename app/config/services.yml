@@ -4,6 +4,15 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    twig.extension.intl:
+         class:               Twig_Extensions_Extension_Intl
+         tags:
+             - { name: twig.extension }
+
+    # Need to override the console path
+    oro_entity_config.tools.command_executor:
+        class: %oro_entity_config.tools.command_executor.class%
+        arguments:
+            - %kernel.root_dir%/../bin/console
+            - %kernel.environment%
+            - @oro_cache.oro_data_cache_manager

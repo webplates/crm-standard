@@ -33,6 +33,7 @@ php:
         - db
     environment:
         XDEBUG_CONFIG: idekey=PHPSTORM
+    mem_limit: 2000000000
 
 web:
     build: docker/nginx
