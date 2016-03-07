@@ -1,7 +1,3 @@
 #!/bin/bash
 
-docker-compose run php chown -R www-data. /var/www/var /var/www/web
-sudo cp var/SymfonyRequirements.php .docker/app/var/
-sudo cp var/OroRequirements.php .docker/app/var/
-docker-compose run -u www-data php mkdir /var/www/var/attachment
-docker-compose run -u www-data php bin/console cache:clear
+docker-compose run php bin/console cache:clear
