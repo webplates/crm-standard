@@ -44,6 +44,8 @@ set :linked_files, ["app/config/parameters.yml"]
 set :linked_dirs, [
     fetch(:log_path),
     fetch(:session_path),
+    fetch(:var_path) + "/attachment"
+    fetch(:web_path) + "/media",
     fetch(:web_path) + "/uploads"
 ]
 
