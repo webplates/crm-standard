@@ -1,5 +1,15 @@
 imports:
     - { resource: config_dev.yml }
+    - { resource: security_test.yml }
+
+parameters:
+    database_name: symfony_test
+
+services:
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }
 
 framework:
     test: ~
@@ -15,13 +25,5 @@ web_profiler:
 swiftmailer:
     disable_delivery: true
 
-liip_functional_test:
-    cache_sqlite_db: true
-
-doctrine:
-    dbal:
-        default_connection: default
-        connections:
-            default:
-                driver: pdo_sqlite
-                path:   %kernel.cache_dir%/test.db
+oro_require_js:
+    js_engine: ~
