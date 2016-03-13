@@ -5,9 +5,7 @@
     "description": "The \"Oro Platform Standard Edition\" distribution",
     "autoload": {
         "psr-4": { "": "src/" },
-        "classmap": [
-            "var/OroRequirements.php"
-        ]
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php", "var/OroRequirements.php" ]
     },
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
@@ -15,19 +13,19 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "http://packagist.orocrm.com"
+            "url": "https://packagist.orocrm.com"
         }
     ],
     "require": {
         "php": ">=5.4.9",
         "oro/platform": "^1.9",
-        "liip/monitor-bundle": "^2.1",
+        "liip/monitor-bundle": "^2.3",
         "natxet/CssMin": "^3.0.4"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3",
-        "theofidry/psysh-bundle": "^1.1",
-        "symfony/phpunit-bridge": "~2.7",
+        "sensio/generator-bundle": "^3.0",
+        "theofidry/psysh-bundle": "^2.0",
+        "symfony/phpunit-bridge": "^3.0",
         "halleck45/phpmetrics-collector-bundle": "^0.0.1"
     },
     "scripts": {
@@ -53,7 +51,10 @@
         ]
     },
     "config": {
-        "component-dir": "web/bundles/components"
+        "component-dir": "web/bundles/components",
+        "platform": {
+            "php": "5.5.9"
+        }
     },
     "extra": {
         "symfony-app-dir": "app",
