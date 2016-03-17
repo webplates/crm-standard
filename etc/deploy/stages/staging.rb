@@ -1,1 +1,1 @@
-server "staging.symfony.com", user: "fabien", roles: [:app, :web]
+server "staging.orocrm.com", user: "oro", roles: [:app, :web]

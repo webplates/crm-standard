@@ -1,5 +1,5 @@
-set :application, "symfony"
-set :repo_url, "git@github.com:webplates/symfony-standard.git"
+set :application, "platform"
+set :repo_url, "git@github.com:webplates/platform-standard.git"
 set :branch, ENV["BRANCH"] || "master"
 
 
