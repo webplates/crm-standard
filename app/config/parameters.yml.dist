@@ -19,6 +19,8 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
+    maintenance_ips:   [ 127.0.0.1 ]
+
     # WebSocket server config
     websocket_bind_address:  "0.0.0.0"  # The host IP the socket server will bind to
     websocket_bind_port:     8080       # The port the socket server will listen on
