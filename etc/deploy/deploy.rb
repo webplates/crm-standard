@@ -1,18 +1,15 @@
-set :application, "platform"
+set :application, "webplates/platform"
 set :repo_url, "git@github.com:webplates/platform-standard.git"
 set :branch, ENV["BRANCH"] || "master"
 
 
 # Symfony settings
-set :symfony_directory_structure, 3
-set :sensio_distribution_version, 5
 set :session_path, fetch(:var_path) + "/sessions"
-
 set :controllers_to_clear, ["app_*.php", "config.php"]
 
 
 # NPM config
-set :npm_flags, '--silent --no-progress'
+set :npm_flags, "--silent --no-progress"
 
 
 # Banner
@@ -23,7 +20,7 @@ set :banner_options, {
 
 
 # Shared content
-set :linked_files, ["app/config/parameters.yml"]
+set :linked_files, [fetch(:app_config_path) + "/parameters.yml"]
 set :linked_dirs, [
     fetch(:log_path),
     fetch(:session_path),
@@ -47,3 +44,9 @@ before "symfony:assets:install", "gulp"
 
 # System settings
 set :ssh_options, forward_agent: true
+
+
+# Airbrussh settings
+Airbrussh.configure do |config|
+    config.log_file = "var/logs/capistrano.log"
+end

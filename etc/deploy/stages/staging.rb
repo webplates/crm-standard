@@ -1,1 +1,5 @@
-server "staging.orocrm.com", user: "oro", roles: [:app, :web]
+server "staging.platform.webplates.xyz", user: "webplates", roles: [:app, :db, :web]
+
+after "deploy:updated", :database do
+    invoke "symfony:console", "oro:migration:load", "--force"
+end
