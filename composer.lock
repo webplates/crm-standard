@@ -4123,16 +4123,16 @@
         },
         {
             "name": "oro/platform",
-            "version": "1.9.1",
+            "version": "1.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orocrm/platform.git",
-                "reference": "dcb2a75dd5d2ddb1b25009dfff0f77fd4ad826cb"
+                "reference": "a9c0a22e3bbfd6676f8ae4588bab0ea4e56b93d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orocrm/platform/zipball/dcb2a75dd5d2ddb1b25009dfff0f77fd4ad826cb",
-                "reference": "dcb2a75dd5d2ddb1b25009dfff0f77fd4ad826cb",
+                "url": "https://api.github.com/repos/orocrm/platform/zipball/a9c0a22e3bbfd6676f8ae4588bab0ea4e56b93d4",
+                "reference": "a9c0a22e3bbfd6676f8ae4588bab0ea4e56b93d4",
                 "shasum": ""
             },
             "require": {
@@ -4225,7 +4225,7 @@
             ],
             "description": "Business Application Platform (BAP)",
             "homepage": "https://github.com/orocrm/platform.git",
-            "time": "2016-03-04 17:55:51"
+            "time": "2016-03-31 09:55:53"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -6312,12 +6312,12 @@
             "version": "v1.8.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Halleck45/PhpMetrics.git",
+                "url": "https://github.com/phpmetrics/PhpMetrics.git",
                 "reference": "01736a038e34c1ec71ceec46388777988b95bd5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Halleck45/PhpMetrics/zipball/01736a038e34c1ec71ceec46388777988b95bd5c",
+                "url": "https://api.github.com/repos/phpmetrics/PhpMetrics/zipball/01736a038e34c1ec71ceec46388777988b95bd5c",
                 "reference": "01736a038e34c1ec71ceec46388777988b95bd5c",
                 "shasum": ""
             },
