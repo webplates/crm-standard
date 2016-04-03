@@ -5,20 +5,6 @@ parameters:
 
 services:
     twig.extension.intl:
-         class:               Twig_Extensions_Extension_Intl
+         class: Twig_Extensions_Extension_Intl
          tags:
              - { name: twig.extension }
-
-    # Need to override the console path
-    oro_entity_config.tools.command_executor:
-        class: %oro_entity_config.tools.command_executor.class%
-        arguments:
-            - %kernel.root_dir%/../bin/console
-            - %kernel.environment%
-            - @oro_cache.oro_data_cache_manager
-
-    oro_entity_extend.entity.cache.warmer.workaround:
-        public: false
-        class: EntityAliasWorkaroundCacheWarmer
-        tags:
-            - { name: kernel.cache_warmer, priority: 25 }

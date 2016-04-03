@@ -1,0 +1,18 @@
+parameters:
+    kernel.console_path: "%kernel.root_dir%/../bin/console"
+
+services:
+    # Need to override the console path
+    # See https://github.com/orocrm/platform/issues/436
+    oro_entity_config.tools.command_executor:
+        class: %oro_entity_config.tools.command_executor.class%
+        arguments:
+            - "%kernel.console_path%"
+            - "%kernel.environment%"
+            - @oro_cache.oro_data_cache_manager
+
+    oro_hotfix._entity_extend.entity_alias.cache.warmer:
+        public: false
+        class: HotfixBundle\Cache\EntityAliasCacheWarmer
+        tags:
+            - { name: kernel.cache_warmer, priority: 25 }

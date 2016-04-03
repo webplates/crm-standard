@@ -12,6 +12,7 @@ class AppKernel extends OroKernel
             new Liip\MonitorBundle\LiipMonitorBundle(),
 
 //            new AppBundle\AppBundle(),
+            new HotfixBundle\HotfixBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
