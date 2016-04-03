@@ -5,7 +5,7 @@
     "description": "The \"Oro Platform Standard Edition\" distribution",
     "autoload": {
         "psr-4": { "": "src/" },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php", "var/OroRequirements.php" ]
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php", "var/OroRequirements.php", "app/EntityAliasWorkaroundCacheWarmer.php" ]
     },
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
@@ -68,8 +68,7 @@
         },
         "branch-alias": {
             "dev-master": "1.10-dev"
-        },
-        "symfony-cache-warmup": true
+        }
     },
     "prefer-stable": true,
     "minimum-stability": "dev"

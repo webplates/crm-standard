@@ -16,3 +16,9 @@ services:
             - %kernel.root_dir%/../bin/console
             - %kernel.environment%
             - @oro_cache.oro_data_cache_manager
+
+    oro_entity_extend.entity.cache.warmer.workaround:
+        public: false
+        class: EntityAliasWorkaroundCacheWarmer
+        tags:
+            - { name: kernel.cache_warmer, priority: 25 }
