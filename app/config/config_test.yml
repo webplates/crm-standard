@@ -1,6 +1,7 @@
 imports:
     - { resource: config_dev.yml }
     - { resource: security_test.yml }
+    - { resource: extras/test.yml }
 
 parameters:
     database_name: symfony_test
