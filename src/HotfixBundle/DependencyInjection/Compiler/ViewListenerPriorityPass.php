@@ -22,7 +22,7 @@ class ViewListenerPriorityPass implements CompilerPassInterface
         if (array_key_exists('kernel.event_listener', $tags)) {
             foreach ($tags['kernel.event_listener'] as &$tag) {
                 if (array_key_exists('event', $tag) && 'kernel.view' === $tag['event']) {
-                    $tag['priority'] = 50;
+                    $tag['priority'] = 255; // 50 does not always seem to be enough
                 }
             }
 
