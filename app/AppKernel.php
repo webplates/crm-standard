@@ -21,7 +21,6 @@ class AppKernel extends OroKernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new Fidry\PsyshBundle\PsyshBundle();
-            $bundles[] = new Hal\Bundle\PhpMetricsCollector\PhpMetricsCollectorBundle();
         }
 
         if ('test' === $this->getEnvironment()) {

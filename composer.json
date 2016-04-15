@@ -25,8 +25,7 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "theofidry/psysh-bundle": "^2.0",
-        "symfony/phpunit-bridge": "^3.0",
-        "halleck45/phpmetrics-collector-bundle": "^0.0.1"
+        "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
         "post-install-cmd": [
