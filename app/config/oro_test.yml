@@ -1,0 +1,11 @@
+parameters:
+    database_name: symfony_test
+
+services:
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }
+
+oro_require_js:
+    js_engine: ~

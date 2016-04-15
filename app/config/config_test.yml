@@ -1,16 +1,7 @@
 imports:
     - { resource: config_dev.yml }
     - { resource: security_test.yml }
-    - { resource: extras/test.yml }
-
-parameters:
-    database_name: symfony_test
-
-services:
-    twig.extension.debug:
-        class: Twig_Extensions_Extension_Debug
-        tags:
-            - { name: twig.extension }
+    - { resource: oro_test.yml }
 
 framework:
     test: ~
@@ -25,6 +16,3 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
-
-oro_require_js:
-    js_engine: ~
