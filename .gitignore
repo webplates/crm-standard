@@ -1,9 +1,9 @@
 # General
+.DS_Store
 /.env*
 /.idea/
 /.vagrant/
 /build/
-.DS_Store
 
 # Symfony
 /app/config/parameters.yml
@@ -45,6 +45,9 @@
 /web/yandex-*.png
 /web/yandex-browser-manifest.json
 
+# Testing
+/behat.yml
+/phpspec.yml
 
 # Oro
 !/var/attachment
