@@ -2,8 +2,14 @@
 .DS_Store
 /.env*
 /.idea/
-/.vagrant/
 /build/
+/etc/**/*.env
+
+# Vagrant
+/.vagrant/
+/etc/vagrant/config.yml
+/etc/vagrant/ansible/playbook.retry
+/etc/vagrant/ansible/vars/config.yml
 
 # Symfony
 /app/config/parameters.yml
@@ -26,7 +32,7 @@
 /bower_components/
 /node_modules/
 /npm-debug.log
-/src/AppBundle/Resources/public/
+/web/assets/
 
 # Favicons
 /app/Resources/views/favicons.html.twig

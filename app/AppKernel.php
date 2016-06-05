@@ -37,12 +37,12 @@ class AppKernel extends OroKernel
 
     public function getCacheDir()
     {
-        return KERNEL_STORAGE_DIR.'/var/cache/'.$this->environment;
+        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return KERNEL_STORAGE_DIR.'/var/logs';
+        return dirname(__DIR__).'/var/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)

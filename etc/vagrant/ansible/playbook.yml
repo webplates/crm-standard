@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vars/all.yml
+    - vars/config.yml
+  roles:
+    - server
+    - nginx
+    - mariadb
+    - php
+    - blackfire
+    - xdebug
+    - composer
+    - nodejs
+    - app
+  environment:
+    SYMFONY__kernel__logs_dir: /opt/symfony/logs
+    SYMFONY__kernel__cache_dir: /opt/symfony/cache

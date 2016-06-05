@@ -1,0 +1,42 @@
+---
+- name: Set PHP user
+  lineinfile: dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp="^;?user" line="user = vagrant"
+  notify: restart php-fpm
+
+- name: Set listen port
+  lineinfile: dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp="listen =" line="listen = 9000"
+  notify: restart php-fpm
+
+- name: Catch workers output
+  lineinfile: dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf state=present regexp="^;catch_workers_output" line="catch_workers_output = yes"
+  notify: restart php-fpm
+
+- name: Ensure timezone is set in fpm php.ini
+  lineinfile: dest=/etc/php/{{ php.version }}/fpm/php.ini
+              regexp='date.timezone ='
+              line='date.timezone = {{ server.timezone }}'
+  notify: restart php-fpm
+
+- name: Ensure timezone is set in cli php.ini
+  lineinfile: dest=/etc/php/{{ php.version }}/cli/php.ini
+              regexp='date.timezone ='
+              line='date.timezone = {{ server.timezone }}'
+  notify: restart php-fpm
+
+- name: Set kernel cache path
+  lineinfile:
+    dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf
+    regexp="^env\[SYMFONY__kernel__cache_dir\]"
+    line="env[SYMFONY__kernel__cache_dir]=\"/opt/symfony/cache\""
+    state=present
+    insertafter=EOF
+  notify: restart php-fpm
+
+- name: Set kernel logs path
+  lineinfile:
+    dest=/etc/php/{{ php.version }}/fpm/pool.d/www.conf
+    regexp="^env\[SYMFONY__kernel__logs_dir\]"
+    line="env[SYMFONY__kernel__logs_dir]=\"/opt/symfony/logs\""
+    state=present
+    insertafter=EOF
+  notify: restart php-fpm
