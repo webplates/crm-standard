@@ -7,14 +7,6 @@ services:
             - .:/var/www
         tty: true
 
-    frontend:
-        build: etc/docker/frontend
-        volumes_from:
-            - app
-        environment:
-            NPM_CONFIG_PREFIX: /var/www/var/docker/npm/prefix
-            NPM_CONFIG_CACHE: /var/www/var/docker/npm/cache
-
     db:
         image: mysql:latest
         ports:
