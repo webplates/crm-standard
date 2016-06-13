@@ -79,7 +79,7 @@ knp_gaufrette:
     adapters:
         attachments:
             local:
-                directory: %kernel.storage_dir%/var/attachments
+                directory: %kernel.root_dir%/../var/attachments
 
 #
 # ORO Bundles config
