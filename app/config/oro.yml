@@ -12,7 +12,7 @@ assetic:
     filters:
         cssrewrite: ~
         lessphp:
-            file: %kernel.storage_dir%/vendor/leafo/lessphp/lessc.inc.php
+            file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             apply_to: "\.less$"
             paths: ["%kernel.root_dir%/../web/bundles"]
         cssmin: ~
