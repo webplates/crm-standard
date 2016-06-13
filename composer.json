@@ -1,8 +1,8 @@
 {
-    "name": "oro/platform-standard-edition",
+    "name": "oro/crm-standard-edition",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Oro Platform Standard Edition\" distribution",
+    "description": "The \"Oro CRM Standard Edition\" distribution",
     "autoload": {
         "psr-4": { "": "src/" },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php", "var/OroRequirements.php" ]
