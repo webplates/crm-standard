@@ -19,6 +19,7 @@
     "require": {
         "php": ">=5.4.9",
         "oro/platform": "^1.9",
+        "oro/crm": "^1.9",
         "liip/monitor-bundle": "^2.3",
         "natxet/CssMin": "^3.0.4"
     },

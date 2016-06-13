@@ -12,7 +12,7 @@ assetic:
     filters:
         cssrewrite: ~
         lessphp:
-            file: %kernel.storage_dir%/vendor/leafo/lessphp/lessc.inc.php
+            file: %kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php
             apply_to: "\.less$"
             paths: ["%kernel.root_dir%/../web/bundles"]
         cssmin: ~
@@ -79,13 +79,18 @@ knp_gaufrette:
     adapters:
         attachments:
             local:
-                directory: %kernel.storage_dir%/var/attachments
+                directory: %kernel.root_dir%/../var/attachments
 
 #
 # ORO Bundles config
 #
 oro_distribution:
     entry_point: ~
+
+oro_ui:
+    settings:
+        organization_name:
+            value:            "OroCRM"
 
 oro_require_js:
     build_path:               "js/oro.min.js"
@@ -101,6 +106,9 @@ oro_help:
         Oro:
             prefix: ~
             alias: Platform
+        OroCRM:
+            prefix: ~
+            alias: CRM
     routes:
         oro_default:
             uri: Platform/OroDashboardBundle
